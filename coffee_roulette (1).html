@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#25263b" />
+<title>오늘 커피는 누가? | 커피 쏘기 룰렛</title>
+<style>
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/variable/pretendardvariable.css");
+:root{--bg:#111522;--surface:#1d2332;--surface2:#252d40;--border:#364058;--text:#f7f8fd;--muted:#adb7cc;--accent:#ffcb71;--accent2:#ff916d;--green:#8ce5c0;--shadow:0 24px 75px rgba(0,0,0,.3)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;min-height:100vh;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:radial-gradient(ellipse 65% 50% at 50% -15%,#3e3442 0,transparent 72%),var(--bg);color:var(--text)}button,input{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.45}.shell{max-width:1150px;margin:0 auto;padding:42px 24px 48px}.topline{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:34px}.logo{font-weight:850;display:flex;align-items:center;gap:11px;letter-spacing:-.5px}.logo-icon{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-size:21px;background:#ffcb7123;border:1px solid #ffcb7152}.pill{border:1px solid var(--border);background:#ffffff08;border-radius:30px;padding:8px 14px;font-size:12px;color:#d1d8e7}.hero{text-align:center;margin:0 auto 32px}.eyebrow{color:var(--accent);font-size:12px;font-weight:800;letter-spacing:2px;margin-bottom:12px}.hero h1{font-size:clamp(32px,5vw,56px);line-height:1.15;letter-spacing:-2px;margin:0 0 14px;font-weight:900}.hero h1 span{background:linear-gradient(100deg,#ffe2a7,#ff9e86);-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{margin:0;color:var(--muted);font-size:15px;line-height:1.7}.layout{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(300px,.75fr);gap:22px;align-items:stretch}.panel{border:1px solid #ffffff17;background:linear-gradient(145deg,#232939,#1b2030);border-radius:25px;box-shadow:var(--shadow)}.wheel-panel{padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:590px;position:relative;overflow:hidden}.wheel-panel::before{content:"";position:absolute;width:500px;height:500px;background:#ffbc6b10;filter:blur(70px);pointer-events:none}.wheel-wrap{position:relative;width:min(100%,460px);aspect-ratio:1;margin:10px auto 19px}.wheel-wrap canvas{width:100%;height:100%;display:block;filter:drop-shadow(0 20px 26px #0006)}.pointer{position:absolute;top:-10px;left:50%;transform:translateX(-50%);z-index:3;filter:drop-shadow(0 5px 3px #0005)}.pointer svg{width:42px;height:53px}.hub{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:78px;height:78px;border:7px solid #fffaf5;background:linear-gradient(145deg,#fff4d6,#ffd9de);border-radius:50%;z-index:2;box-shadow:0 5px 15px #0005;display:grid;place-items:center;color:#543323;font-size:29px}.status{font-size:14px;font-weight:650;text-align:center;color:var(--muted);min-height:27px}.status strong{color:var(--accent)}.spin{border:0;border-radius:16px;min-height:58px;width:min(100%,330px);background:linear-gradient(110deg,#ffe09b,#ffae7a);box-shadow:0 8px 25px #ffaf6630;color:#3d281d;font-size:18px;font-weight:900;transition:transform .15s,filter .15s}.spin:hover:not(:disabled){filter:brightness(1.06);transform:translateY(-2px)}.spin:active:not(:disabled){transform:scale(.98)}.spin:focus-visible,.add:focus-visible,.tag button:focus-visible,.secondary:focus-visible,.modal button:focus-visible{outline:3px solid #fff;outline-offset:3px}.side{display:flex;flex-direction:column;gap:18px}.settings{padding:26px}.head{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;gap:8px}.head h2{font-size:20px;margin:0;letter-spacing:-.6px}.count{font-size:12px;color:var(--accent);background:#ffcb7118;border:1px solid #ffcb7130;border-radius:12px;padding:7px 10px;font-weight:750}.hint{font-size:13px;color:var(--muted);margin:0 0 22px;line-height:1.7}.form{display:flex;gap:9px}.form input{min-width:0;flex:1;background:#141927;border:1px solid var(--border);color:var(--text);border-radius:12px;padding:13px 14px;outline:none}.form input:focus{border-color:var(--accent)}.form input::placeholder{color:#8993a7}.add{border:0;border-radius:12px;padding:0 19px;font-weight:850;background:#e9ecf3;color:#1a2231}.tags{display:flex;flex-wrap:wrap;gap:9px;margin:20px 0 0;min-height:50px;align-content:flex-start}.tag{display:inline-flex;align-items:center;gap:9px;border:1px solid #47516a;border-radius:11px;background:#ffffff0a;padding:9px 10px 9px 13px;max-width:100%;font-size:13px;font-weight:700}.tag .name{overflow-wrap:anywhere}.tag button{display:grid;place-items:center;width:20px;height:20px;border:0;border-radius:6px;background:#ffffff14;color:#c6cede;font-size:16px;line-height:1}.tag button:hover{background:#ff8c8c44;color:#fff}.empty{font-size:13px;color:var(--muted);line-height:1.6}.divider{border:0;border-top:1px solid var(--border);margin:22px 0}.side-actions{display:flex;flex-wrap:wrap;gap:9px}.secondary{background:#ffffff0b;border:1px solid var(--border);border-radius:11px;padding:10px 13px;color:#d3dbeb;font-size:12px;font-weight:750}.secondary:hover:not(:disabled){background:#ffffff1b}.rules{padding:22px 26px;flex:1}.rules h3{font-size:15px;margin:0 0 15px;display:flex;align-items:center;gap:8px}.rule{display:flex;gap:10px;margin:12px 0;font-size:13px;line-height:1.65;color:#c3cbdc}.rule .num{flex:0 0 23px;height:23px;display:grid;place-items:center;border-radius:8px;background:#ffcb7118;color:var(--accent);font-weight:800;font-size:11px}.foot{text-align:center;color:#7f8ba3;font-size:12px;margin-top:28px}.modal-backdrop{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;padding:20px;background:#080c17c9;backdrop-filter:blur(10px)}.modal-backdrop[hidden]{display:none}.modal{position:relative;overflow:hidden;background:linear-gradient(150deg,#333044,#1f2738);border:1px solid #f7c78960;border-radius:28px;max-width:420px;width:100%;text-align:center;padding:42px 28px 30px;box-shadow:0 30px 100px #0009;animation:pop .3s ease-out}.modal .emoji{font-size:55px;margin-bottom:14px}.modal .small{color:#ffce85;font-weight:800;font-size:13px;letter-spacing:1px}.winner{font-weight:950;font-size:clamp(35px,7vw,54px);letter-spacing:-1.5px;margin:12px 0;overflow-wrap:anywhere}.modal p{color:#c5ccda;margin:0 0 24px}.modal button{padding:13px 21px;border-radius:13px;border:0;background:#ffcf88;color:#3c281e;font-weight:850}.modal .close{position:absolute;top:12px;right:14px;color:#b8c0d0;background:none;font-size:25px;padding:5px 10px}.confetti{position:fixed;pointer-events:none;z-index:25;top:-20px;width:8px;height:12px;animation:fall var(--duration) linear forwards;left:var(--left);background:var(--color);transform:rotate(var(--rotation))}@keyframes fall{to{transform:translate(var(--drift),110vh) rotate(800deg);opacity:.3}}@keyframes pop{from{transform:translateY(14px) scale(.96);opacity:0}to{transform:translateY(0) scale(1);opacity:1}}@media(max-width:850px){.layout{grid-template-columns:1fr}.wheel-panel{min-height:unset;padding:23px 20px 28px}.side{display:grid;grid-template-columns:1fr 1fr;align-items:stretch}.settings{grid-column:1/3}.rules{grid-column:1/3}.wheel-wrap{width:min(100%,430px)}}@media(max-width:520px){.shell{padding:20px 14px 30px}.topline{margin-bottom:28px}.pill{font-size:10px;padding:7px 9px}.hero{margin-bottom:26px}.hero h1{letter-spacing:-1.3px}.hero p{font-size:13px}.wheel-panel{border-radius:19px;padding:20px 12px 25px}.wheel-wrap{width:min(100%,355px);margin:12px auto 18px}.hub{width:65px;height:65px;font-size:25px;border-width:6px}.pointer svg{width:35px}.settings,.rules{padding:21px}.spin{min-height:55px}.panel{border-radius:20px}}
+
+/* Cheerful coffee buddies */
+.mascot-zone{position:relative;display:flex;align-items:center;justify-content:center;gap:18px;width:100%;margin:0 auto 3px;min-height:118px;z-index:2}
+.mascot-button{border:0;background:none;padding:0;cursor:pointer;flex:none;animation:bob 2.8s ease-in-out infinite;filter:drop-shadow(0 12px 10px #0003);transition:transform .2s}
+.mascot-button:hover{transform:rotate(-7deg) scale(1.07)}.mascot-button:focus-visible{outline:3px solid #ffd8ef;border-radius:25px}
+.mascot-svg{width:116px;height:113px;display:block;overflow:visible}.mascot-eyes{transform-origin:75px 69px;animation:blink 5.4s infinite}.mascot-arm-left{transform-origin:30px 73px;animation:wave 1.8s ease-in-out infinite}.mascot-cheek{opacity:.9}
+.mascot-bubble{position:relative;background:#fff7fa;color:#594960;border:2px solid #f6d6ea;border-radius:20px;padding:12px 16px;max-width:265px;font-weight:850;font-size:14px;line-height:1.6;box-shadow:0 8px 19px #0002;word-break:keep-all}
+.mascot-bubble::before{content:'';position:absolute;left:-9px;top:38%;width:14px;height:14px;background:#fff7fa;border-left:2px solid #f6d6ea;border-bottom:2px solid #f6d6ea;transform:rotate(45deg)}
+.mascot-button.celebrate{animation:party .55s ease-in-out infinite alternate}.mascot-button.thinking{animation:wobble .5s ease-in-out infinite alternate}.mascot-button.celebrate .mascot-arm-left{animation:wave .3s ease-in-out infinite}
+.sparkle{position:absolute;pointer-events:none;font-size:23px;animation:spark 2s ease-in-out infinite}.sparkle.a{top:0;left:15%}.sparkle.b{right:11%;bottom:9%;animation-delay:.7s}
+.modal-mascot{width:110px;height:104px;margin:0 auto 8px;animation:party .7s ease-in-out infinite alternate}.modal-mascot .mascot-svg{width:110px;height:105px}
+@keyframes bob{0%,100%{translate:0 0}50%{translate:0 -7px}}@keyframes blink{0%,43%,47%,100%{scale:1 1}45%{scale:1 .1}}@keyframes wave{0%,100%{rotate:-8deg}50%{rotate:17deg}}@keyframes party{from{transform:rotate(-10deg) translateY(2px)}to{transform:rotate(10deg) translateY(-9px)}}@keyframes wobble{from{transform:rotate(-6deg)}to{transform:rotate(6deg)}}@keyframes spark{0%,100%{transform:scale(.75) rotate(-15deg);opacity:.6}50%{transform:scale(1.25) rotate(15deg);opacity:1}}
+@media(max-width:520px){.mascot-zone{gap:6px;min-height:99px}.mascot-svg{width:91px;height:92px}.mascot-bubble{font-size:12px;padding:10px 12px;max-width:205px}.sparkle{font-size:17px}}
+@media(prefers-reduced-motion:reduce){.mascot-button,.mascot-eyes,.mascot-arm-left,.sparkle,.modal-mascot{animation:none!important}}
+
+/* Participant editing */
+.tag .edit-name{width:auto;min-width:38px;height:27px;padding:0 7px;color:#daedff;background:#6d9cc633;font-size:12px;font-weight:800}
+.tag .remove-name{width:27px;height:27px}
+.tag.editing{border-color:#ffcf88;background:#ffcf8814;flex:1 1 100%;flex-wrap:wrap}
+.tag .edit-input{flex:1;min-width:100px;width:110px;background:#141927;border:1px solid #ffcf88;border-radius:7px;color:white;padding:7px 9px;font-size:13px}
+.tag .save-name{width:auto;height:30px;padding:0 10px;background:#ffcf88;color:#30241e;font-size:12px;font-weight:800}
+.tag .cancel-name{width:auto;height:30px;padding:0 10px;font-size:12px}
+.feedback{margin:10px 0 0;min-height:19px;font-size:12px;color:#a8ebcd}
+.feedback.error{color:#ffaaaa}
+/* Contemporary Korean UI typography: Pretendard Variable */
+body{font-family:"Pretendard Variable",Pretendard,system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif}
+.spin{font-family:inherit;font-size:clamp(18px,2.5vw,21px);font-weight:800;letter-spacing:-.045em;text-shadow:none;border:1px solid rgba(255,255,255,.32);border-radius:17px;box-shadow:0 7px 22px rgba(255,174,122,.21),inset 0 1px 0 rgba(255,255,255,.5);transform-origin:center;transition:transform .18s ease,box-shadow .18s ease,filter .18s ease}
+.spin:hover:not(:disabled){filter:brightness(1.035);transform:translateY(-2px);box-shadow:0 11px 26px rgba(255,174,122,.32),inset 0 1px 0 rgba(255,255,255,.5)}
+.spin:active:not(:disabled){transform:translateY(1px) scale(.985);box-shadow:0 3px 12px rgba(255,174,122,.2)}
+@media(max-width:520px){.spin{font-size:19px;letter-spacing:-.04em}}
+@media(prefers-reduced-motion:reduce){.spin{transition:none}}
+</style>
+</head>
+<body>
+<main class="shell">
+  <header class="topline"><div class="logo"><div class="logo-icon" aria-hidden="true">☕</div><span>COFFEE PICK</span></div><div class="pill">오늘의 커피 담당 정하기 ✨</div></header>
+  <section class="hero"><div class="eyebrow">THE COFFEE ROULETTE</div><h1>오늘 커피는 <span>누가 쏠까?</span></h1><p>운명의 한 잔을 결정할 시간!<br>이름을 넣고 룰렛을 돌려보세요.</p></section>
+  <div class="layout">
+    <section class="panel wheel-panel" aria-label="커피 룰렛">
+      <div class="mascot-zone"><span class="sparkle a" aria-hidden="true">✨</span><button type="button" id="mascot" class="mascot-button" title="커피 요정에게 말 걸기" aria-label="커피 요정에게 말 걸기"><svg class="mascot-svg" viewBox="0 0 150 145" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="웃는 딸기라떼 캐릭터">
+<ellipse cx="74" cy="135" rx="45" ry="7" fill="#181829" opacity=".16"/>
+<g class="mascot-arm-left"><path d="M33 77 Q9 67 12 52" fill="none" stroke="#f4b2a0" stroke-width="11" stroke-linecap="round"/><circle cx="11" cy="50" r="8" fill="#f4b2a0"/></g>
+<path d="M117 77 Q138 64 136 52" fill="none" stroke="#f4b2a0" stroke-width="11" stroke-linecap="round"/><circle cx="136" cy="51" r="8" fill="#f4b2a0"/>
+<path d="M52 116 L44 132 M94 116 L103 132" stroke="#ba7a8a" stroke-width="10" stroke-linecap="round"/>
+<path d="M30 37 Q30 25 43 25 L108 25 Q121 25 120 38 L112 110 Q110 125 96 125 L53 125 Q39 125 37 110Z" fill="#fff7ed" stroke="#a46b7b" stroke-width="4"/>
+<path d="M36 53 L114 53 L108 108 Q107 119 95 119 L54 119 Q44 119 43 108Z" fill="#f8acc0"/>
+<path d="M34 56 Q76 64 116 55" stroke="#fff0e7" stroke-width="6" fill="none"/>
+<path d="M42 27 L109 27" stroke="#ffe6ee" stroke-width="12" stroke-linecap="round"/>
+<path d="M83 27 L98 1" stroke="#70c7bd" stroke-width="8" stroke-linecap="round"/><path d="M98 1 L108 4" stroke="#70c7bd" stroke-width="6" stroke-linecap="round"/>
+<g class="mascot-eyes"><path d="M58 73 Q62 65 66 73 M87 73 Q91 65 95 73" fill="none" stroke="#684354" stroke-width="4.5" stroke-linecap="round"/></g>
+<ellipse class="mascot-cheek" cx="52" cy="82" rx="9" ry="5" fill="#f27999"/><ellipse class="mascot-cheek" cx="102" cy="82" rx="9" ry="5" fill="#f27999"/>
+<path d="M68 84 Q76 98 85 84Z" fill="#884b61"/><path d="M73 90 Q77 87 81 90" fill="none" stroke="#f9a3b0" stroke-width="3" stroke-linecap="round"/>
+<path d="M45 42 Q58 38 67 41" stroke="white" stroke-width="5" opacity=".6" stroke-linecap="round"/>
+</svg></button><div id="mascot-talk" class="mascot-bubble" role="status" aria-live="polite">안녕! 나는 라떼 요정 ☕<br>오늘은 누가 쏠까? 💕</div><span class="sparkle b" aria-hidden="true">⭐</span></div>
+      <div class="wheel-wrap">
+        <canvas id="wheel" width="900" height="900" role="img" aria-label="참가자별 동일한 확률로 분할된 룰렛"></canvas>
+        <div class="pointer" aria-hidden="true"><svg viewBox="0 0 44 56"><path d="M22 54 2 7Q0 2 7 2h30q7 0 5 5L22 54Z" fill="#fff1d6" stroke="#D4B6C5" stroke-width="3"/></svg></div>
+        <div class="hub" aria-hidden="true">☕</div>
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite">현재 <strong>4명</strong>이 운명을 기다리는 중</p>
+      <button id="spin" class="spin" type="button">🎯 룰렛 돌리기</button>
+    </section>
+    <aside class="side">
+      <section class="panel settings"><div class="head"><h2>👥 참가자 관리</h2><span class="count" id="count">4명 참여 중</span></div><p class="hint">함께 커피 마실 사람들을 추가해 주세요.<br>모든 참가자의 당첨 확률은 동일합니다.</p>
+        <form class="form" id="form" autocomplete="off"><input id="name" aria-label="참가자 이름" maxlength="20" placeholder="이름을 입력하세요" required/><button type="submit" class="add">추가 +</button></form>
+        <p id="feedback" class="feedback" role="status" aria-live="polite"></p><div class="tags" id="tags" aria-label="참가자 목록"></div><hr class="divider"><div class="side-actions"><button class="secondary" id="reset" type="button">↺ 기본 명단</button><button class="secondary" id="clear" type="button">✕ 전체 삭제</button></div>
+      </section>
+      <section class="panel rules"><h3>💡 이용 방법</h3><div class="rule"><span class="num">01</span><span>이름을 추가한 뒤 ‘수정’ 또는 × 버튼으로 명단을 관리하세요.</span></div><div class="rule"><span class="num">02</span><span><b>룰렛 돌리기</b>를 누르면 무작위로 한 명이 선정됩니다.</span></div><div class="rule"><span class="num">03</span><span>당첨된 사람이 오늘의 커피를 쏩니다! ☕</span></div></section>
+    </aside>
+  </div><footer class="foot">GOOD COFFEE, GOOD TEAM · 모두에게 공평한 랜덤 룰렛</footer>
+</main>
+<div class="modal-backdrop" id="result" role="dialog" aria-modal="true" aria-labelledby="winner" hidden><div class="modal"><button class="close" id="close" type="button" aria-label="결과 창 닫기">×</button><div class="modal-mascot" aria-hidden="true"><svg class="mascot-svg" viewBox="0 0 150 145" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="웃는 딸기라떼 캐릭터">
+<ellipse cx="74" cy="135" rx="45" ry="7" fill="#181829" opacity=".16"/>
+<g class="mascot-arm-left"><path d="M33 77 Q9 67 12 52" fill="none" stroke="#f4b2a0" stroke-width="11" stroke-linecap="round"/><circle cx="11" cy="50" r="8" fill="#f4b2a0"/></g>
+<path d="M117 77 Q138 64 136 52" fill="none" stroke="#f4b2a0" stroke-width="11" stroke-linecap="round"/><circle cx="136" cy="51" r="8" fill="#f4b2a0"/>
+<path d="M52 116 L44 132 M94 116 L103 132" stroke="#ba7a8a" stroke-width="10" stroke-linecap="round"/>
+<path d="M30 37 Q30 25 43 25 L108 25 Q121 25 120 38 L112 110 Q110 125 96 125 L53 125 Q39 125 37 110Z" fill="#fff7ed" stroke="#a46b7b" stroke-width="4"/>
+<path d="M36 53 L114 53 L108 108 Q107 119 95 119 L54 119 Q44 119 43 108Z" fill="#f8acc0"/>
+<path d="M34 56 Q76 64 116 55" stroke="#fff0e7" stroke-width="6" fill="none"/>
+<path d="M42 27 L109 27" stroke="#ffe6ee" stroke-width="12" stroke-linecap="round"/>
+<path d="M83 27 L98 1" stroke="#70c7bd" stroke-width="8" stroke-linecap="round"/><path d="M98 1 L108 4" stroke="#70c7bd" stroke-width="6" stroke-linecap="round"/>
+<g class="mascot-eyes"><path d="M58 73 Q62 65 66 73 M87 73 Q91 65 95 73" fill="none" stroke="#684354" stroke-width="4.5" stroke-linecap="round"/></g>
+<ellipse class="mascot-cheek" cx="52" cy="82" rx="9" ry="5" fill="#f27999"/><ellipse class="mascot-cheek" cx="102" cy="82" rx="9" ry="5" fill="#f27999"/>
+<path d="M68 84 Q76 98 85 84Z" fill="#884b61"/><path d="M73 90 Q77 87 81 90" fill="none" stroke="#f9a3b0" stroke-width="3" stroke-linecap="round"/>
+<path d="M45 42 Q58 38 67 41" stroke="white" stroke-width="5" opacity=".6" stroke-linecap="round"/>
+</svg></div><div class="small">오늘의 커피 요정 당첨!</div><div class="winner" id="winner"></div><p>오늘 커피는 잘 마실게요! 😋</p><button id="again" type="button">한 번 더 돌리기 ↻</button></div></div>
+<script>
+(()=>{'use strict';
+const KEY='coffee-roulette-participants-v1',defaults=['김대리','이과장','박주임','최사원'];
+const $=id=>document.getElementById(id),canvas=$('wheel'),ctx=canvas.getContext('2d'),tags=$('tags'),input=$('name'),spinBtn=$('spin'),status=$('status'),modal=$('result');
+const mascot=$('mascot'),talk=$('mascot-talk');
+const phrases=['커피는 사랑이야! ☕💕','오늘은 누가 쏠까? 두근두근!','내가 응원해 줄게! ✨','당첨돼도 울기 없기! 🥹','달콤한 하루가 될 거야! 🍓'];
+mascot.addEventListener('click',()=>{if(spinning){talk.textContent='빙글빙글~ 운명을 고르는 중! 🌀';return}talk.textContent=phrases[randomInt(phrases.length)];mascot.classList.remove('celebrate');});
+const palette=['#FFD6D6','#FFE5C2','#FFF2B8','#D8F2CF','#C9ECE7','#D2E8FF','#DDD9FF','#F4D7F0','#FADBD0','#E1F0CC','#D6E5F5','#FBE6BA'];
+let names;try{const raw=JSON.parse(localStorage.getItem(KEY));names=Array.isArray(raw)?raw.filter(x=>typeof x==='string'&&x.trim()).slice(0,40):[...defaults]}catch{names=[...defaults]}
+let rotation=0,spinning=false,animationId=null,editingIndex=-1;
+function save(){try{localStorage.setItem(KEY,JSON.stringify(names))}catch{}}
+function updateStatus(text){status.innerHTML='';status.textContent=text}
+function feedback(message, error=false){const el=$('feedback');el.textContent=message;el.classList.toggle('error',error)}
+function normalize(value){return value.trim().replace(/\s+/g,' ')}
+function duplicate(value,except=-1){return names.some((n,i)=>i!==except&&n.toLocaleLowerCase()===value.toLocaleLowerCase())}
+function beginEdit(i){
+ if(spinning)return;
+ editingIndex=i;render();
+ const field=tags.querySelector('.edit-input');
+ if(field){field.focus();field.select()}
+}
+function commitEdit(i,value){
+ if(spinning)return;
+ const updated=normalize(value);
+ if(!updated){feedback('이름을 입력해 주세요.',true);return}
+ if(duplicate(updated,i)){feedback('이미 등록된 이름입니다.',true);return}
+ names[i]=updated;editingIndex=-1;save();render();feedback('이름을 수정했어요! ✨');
+}
+function render(){
+ tags.replaceChildren();
+ names.forEach((n,i)=>{
+  const el=document.createElement('span');el.className='tag'+(editingIndex===i?' editing':'');
+  if(editingIndex===i){
+   const field=document.createElement('input');field.className='edit-input';field.value=n;field.maxLength=20;field.setAttribute('aria-label',n+' 이름 수정');
+   const saveBtn=document.createElement('button');saveBtn.type='button';saveBtn.className='save-name';saveBtn.textContent='저장';saveBtn.addEventListener('click',()=>commitEdit(i,field.value));
+   const cancel=document.createElement('button');cancel.type='button';cancel.className='cancel-name';cancel.textContent='취소';cancel.addEventListener('click',()=>{editingIndex=-1;render()});
+   field.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();commitEdit(i,field.value)}if(e.key==='Escape'){editingIndex=-1;render()}});
+   el.append(field,saveBtn,cancel);
+  }else{
+   const label=document.createElement('span');label.className='name';label.textContent=n;
+   const edit=document.createElement('button');edit.type='button';edit.className='edit-name';edit.textContent='수정';edit.disabled=spinning;edit.setAttribute('aria-label',n+' 수정');edit.addEventListener('click',()=>beginEdit(i));
+   const x=document.createElement('button');x.type='button';x.className='remove-name';x.textContent='×';x.setAttribute('aria-label',n+' 삭제');x.disabled=spinning;
+   x.addEventListener('click',()=>{if(spinning)return;names.splice(i,1);editingIndex=-1;save();render();feedback(n+' 님을 삭제했어요.')});
+   el.append(label,edit,x);
+  }
+  tags.append(el)
+ });
+ if(!names.length){const p=document.createElement('p');p.className='empty';p.textContent='아직 참가자가 없어요. 이름을 추가해 주세요!';tags.append(p)}
+ $('count').textContent=names.length+'명 참여 중';spinBtn.disabled=spinning||names.length<2;
+ spinBtn.textContent=spinning?'☕ 운명을 고르는 중…':'🎯 룰렛 돌리기';
+ $('reset').disabled=spinning;$('clear').disabled=spinning;$('form').querySelector('button').disabled=spinning;input.disabled=spinning;
+ if(!spinning)status.innerHTML=names.length>=2?'현재 <strong>'+names.length+'명</strong>이 운명을 기다리는 중':names.length===1?'한 명 더 추가하면 룰렛을 돌릴 수 있어요':'참가자를 두 명 이상 추가해 주세요';
+ draw()
+}
+function draw(){const d=canvas.width,c=d/2,r=c-16;ctx.clearRect(0,0,d,d);ctx.save();ctx.translate(c,c);ctx.rotate(rotation);if(!names.length){ctx.beginPath();ctx.arc(0,0,r,0,Math.PI*2);ctx.fillStyle='#E8E4F4';ctx.fill();ctx.fillStyle='#665D75';ctx.textAlign='center';ctx.font='bold 38px system-ui';ctx.fillText('참가자를 추가하세요',0,-105);ctx.restore();return}const step=Math.PI*2/names.length;for(let i=0;i<names.length;i++){const a=-Math.PI/2+i*step,b=a+step;ctx.beginPath();ctx.moveTo(0,0);ctx.arc(0,0,r,a,b);ctx.closePath();ctx.fillStyle=palette[i%palette.length];ctx.fill();ctx.lineWidth=5;ctx.strokeStyle='#ffffffb0';ctx.stroke();ctx.save();ctx.rotate(a+step/2);ctx.translate(r*.65,0);ctx.rotate(Math.PI/2);ctx.fillStyle='#504A5D';ctx.textAlign='center';ctx.textBaseline='middle';const fs=Math.max(20,Math.min(38,220/names.length+16));ctx.font='800 '+fs+'px system-ui';let label=names[i];if(label.length>9)label=label.slice(0,8)+'…';ctx.fillText(label,0,0,r*.52);ctx.restore()}ctx.beginPath();ctx.arc(0,0,r,0,2*Math.PI);ctx.lineWidth=12;ctx.strokeStyle='#FFF9F6';ctx.stroke();ctx.restore()}
+function randomInt(max){if(window.crypto&&crypto.getRandomValues){const a=new Uint32Array(1),lim=Math.floor(4294967296/max)*max;do{crypto.getRandomValues(a)}while(a[0]>=lim);return a[0]%max}return Math.floor(Math.random()*max)}
+function confetti(){if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;for(let i=0;i<80;i++){const e=document.createElement('i');e.className='confetti';e.style.setProperty('--left',Math.random()*100+'vw');e.style.setProperty('--duration',(2.1+Math.random()*2.3)+'s');e.style.setProperty('--drift',(Math.random()*180-90)+'px');e.style.setProperty('--rotation',Math.random()*360+'deg');e.style.setProperty('--color',palette[i%palette.length]);document.body.append(e);setTimeout(()=>e.remove(),4700)}}
+function showResult(person){mascot.classList.remove('thinking');mascot.classList.add('celebrate');talk.textContent=person+' 님, 커피 잘 마실게요! 🎉';$('winner').textContent=person;modal.hidden=false;$('again').focus();confetti()}
+function closeResult(){modal.hidden=true;spinBtn.focus()}
+function start(){if(spinning||names.length<2)return;mascot.classList.remove('celebrate');mascot.classList.add('thinking');talk.textContent='두근두근... 누구일까?! 🫣';modal.hidden=true;spinning=true;render();updateStatus('두근두근… 오늘의 커피 담당은?');const winnerIndex=randomInt(names.length),step=Math.PI*2/names.length;const norm=x=>((x%(Math.PI*2))+Math.PI*2)%(Math.PI*2);const target=norm(-(winnerIndex+.5)*step);const delta=norm(target-norm(rotation)),begin=rotation,end=begin+Math.PI*2*(6+randomInt(3))+delta;const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches,duration=reduced?250:4700,startTime=performance.now();function frame(now){const p=Math.min(1,(now-startTime)/duration),ease=1-Math.pow(1-p,5);rotation=begin+(end-begin)*ease;draw();if(p<1){animationId=requestAnimationFrame(frame)}else{rotation=norm(end);spinning=false;render();updateStatus('🎉 '+names[winnerIndex]+' 님이 당첨되었습니다!');showResult(names[winnerIndex]);animationId=null}}animationId=requestAnimationFrame(frame)}
+$('form').addEventListener('submit',e=>{
+ e.preventDefault();if(spinning)return;
+ const v=normalize(input.value);
+ if(!v){feedback('이름을 입력해 주세요.',true);input.focus();return}
+ if(names.length>=40){feedback('참가자는 최대 40명까지 추가할 수 있어요.',true);return}
+ if(duplicate(v)){feedback('이미 등록된 이름이에요.',true);input.select();return}
+ names.push(v);editingIndex=-1;input.value='';save();render();feedback(v+' 님이 추가됐어요! 🎉');input.focus()
+});
+$('reset').addEventListener('click',()=>{if(spinning)return;names=[...defaults];editingIndex=-1;rotation=0;save();render();feedback('기본 명단으로 변경했어요.')});
+$('clear').addEventListener('click',()=>{if(spinning)return;names=[];editingIndex=-1;rotation=0;save();render();feedback('참가자 명단을 비웠어요.');input.focus()});
+spinBtn.addEventListener('click',start);$('again').addEventListener('click',()=>{modal.hidden=true;start()});$('close').addEventListener('click',closeResult);modal.addEventListener('click',e=>{if(e.target===modal)closeResult()});document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!modal.hidden)closeResult()});render();
+})();
+</script>
+</body></html>
